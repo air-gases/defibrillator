@@ -28,7 +28,9 @@ import (
 )
 
 func main() {
-	air.Gases = []air.Gas{defibrillator.Gas}
+	air.Gases = []air.Gas{
+		defibrillator.Gas(defibrillator.GasConfig{}),
+	}
 	air.GET("/", func(req *air.Request, res *air.Response) error {
 		panic("SOME TERRIBLE THINGS HAPPENED!")
 		return res.String("This method will never be executed.")
