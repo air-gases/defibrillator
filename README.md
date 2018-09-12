@@ -1,7 +1,7 @@
 # Defibrillator
 
 A useful gas that used to recover from panics for the web applications built
-using [Air](https://github.com/sheng/air).
+using [Air](https://github.com/aofei/air).
 
 ## Installation
 
@@ -24,7 +24,7 @@ package main
 
 import (
 	"github.com/air-gases/defibrillator"
-	"github.com/sheng/air"
+	"github.com/aofei/air"
 )
 
 func main() {
