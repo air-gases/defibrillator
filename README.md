@@ -28,7 +28,7 @@ import (
 )
 
 func main() {
-	air.Gases = []air.Gas{
+	air.Pregases = []air.Gas{
 		defibrillator.Gas(defibrillator.GasConfig{}),
 	}
 	air.GET("/", func(req *air.Request, res *air.Response) error {
