@@ -33,7 +33,7 @@ func main() {
 	}
 	air.GET("/", func(req *air.Request, res *air.Response) error {
 		panic("SOME TERRIBLE THINGS HAPPENED!")
-		return res.String("This method will never be executed.")
+		return res.WriteString("This method will never be executed.")
 	})
 	air.Serve()
 }
