@@ -28,14 +28,15 @@ import (
 )
 
 func main() {
-	air.Pregases = []air.Gas{
+	a := air.Default
+	a.Pregases = []air.Gas{
 		defibrillator.Gas(defibrillator.GasConfig{}),
 	}
-	air.GET("/", func(req *air.Request, res *air.Response) error {
+	a.GET("/", func(req *air.Request, res *air.Response) error {
 		panic("SOME TERRIBLE THINGS HAPPENED!")
 		return res.WriteString("This method will never be executed.")
 	})
-	air.Serve()
+	a.Serve()
 }
 ```
 
