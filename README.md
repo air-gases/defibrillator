@@ -46,7 +46,7 @@ and run it
 $ go run main.go
 ```
 
-then visit `http://localhost:2333`.
+then visit `http://localhost:8080`.
 
 ## Community
 
