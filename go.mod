@@ -1,3 +1,3 @@
 module github.com/air-gases/defibrillator
 
-require github.com/aofei/air v0.2.0
+require github.com/aofei/air v0.3.0
