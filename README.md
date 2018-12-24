@@ -29,6 +29,7 @@ import (
 
 func main() {
 	a := air.Default
+	a.DebugMode = true
 	a.Pregases = []air.Gas{
 		defibrillator.Gas(defibrillator.GasConfig{}),
 	}
