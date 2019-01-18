@@ -1,5 +1,7 @@
 # Defibrillator
 
+[![GoDoc](https://godoc.org/github.com/air-gases/defibrillator?status.svg)](https://godoc.org/github.com/air-gases/defibrillator)
+
 A useful gas that used to recover from panics for the web applications built
 using [Air](https://github.com/aofei/air).
 
