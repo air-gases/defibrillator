@@ -2,6 +2,7 @@ package defibrillator
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/aofei/air"
 )
@@ -15,9 +16,22 @@ func Gas(gc GasConfig) air.Gas {
 	return func(next air.Handler) air.Handler {
 		return func(req *air.Request, res *air.Response) (err error) {
 			defer func() {
-				if r := recover(); r != nil {
+				r := recover()
+				if r == nil {
+					return
+				}
+
+				var isError bool
+				err, isError = r.(error)
+				if !isError {
 					err = fmt.Errorf("%v", r)
 				}
+
+				if res.Written {
+					return
+				}
+
+				res.Status = http.StatusInternalServerError
 			}()
 
 			return next(req, res)
