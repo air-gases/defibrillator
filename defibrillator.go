@@ -2,7 +2,6 @@ package defibrillator
 
 import (
 	"fmt"
-	"net/http"
 
 	"github.com/aofei/air"
 )
@@ -26,12 +25,6 @@ func Gas(gc GasConfig) air.Gas {
 				if !isError {
 					err = fmt.Errorf("%v", r)
 				}
-
-				if res.Written {
-					return
-				}
-
-				res.Status = http.StatusInternalServerError
 			}()
 
 			return next(req, res)
