@@ -18,12 +18,18 @@ var stackPool = &sync.Pool{
 // GasConfig is a set of configurations for the `Gas`.
 type GasConfig struct {
 	DisableIncludeStacks bool
+
+	Skippable func(*air.Request, *air.Response) bool
 }
 
 // Gas returns an `air.Gas` that is used to recover from panics based on the gc.
 func Gas(gc GasConfig) air.Gas {
 	return func(next air.Handler) air.Handler {
 		return func(req *air.Request, res *air.Response) (err error) {
+			if gc.Skippable != nil && gc.Skippable(req, res) {
+				return next(req, res)
+			}
+
 			defer func() {
 				r := recover()
 				if r == nil {
