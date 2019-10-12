@@ -2,6 +2,7 @@ package defibrillator
 
 import (
 	"fmt"
+	"net/http"
 	"runtime"
 	"sync"
 
@@ -42,14 +43,22 @@ func Gas(gc GasConfig) air.Gas {
 					err = fmt.Errorf("%v", r)
 				}
 
-				if gc.DisableIncludeStacks {
+				if !gc.DisableIncludeStacks {
+					stack := stackPool.Get().([]byte)
+					length := runtime.Stack(stack, true)
+					err = fmt.Errorf(
+						"%v: %s",
+						err,
+						stack[:length],
+					)
+					stackPool.Put(stack)
+				}
+
+				if res.Written {
 					return
 				}
 
-				stack := stackPool.Get().([]byte)
-				length := runtime.Stack(stack, true)
-				err = fmt.Errorf("%v: %s", err, stack[:length])
-				stackPool.Put(stack)
+				res.Status = http.StatusInternalServerError
 			}()
 
 			return next(req, res)
