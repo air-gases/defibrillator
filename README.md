@@ -1,6 +1,6 @@
 # Defibrillator
 
-[![GoDoc](https://godoc.org/github.com/air-gases/defibrillator?status.svg)](https://godoc.org/github.com/air-gases/defibrillator)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/air-gases/defibrillator)](https://pkg.go.dev/github.com/air-gases/defibrillator)
 
 A useful gas that used to recover from panics for the web applications built
 using [Air](https://github.com/aofei/air).
