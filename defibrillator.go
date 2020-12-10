@@ -10,7 +10,7 @@ import (
 )
 
 // stackPool is the pool of stack messages.
-var stackPool = &sync.Pool{
+var stackPool = sync.Pool{
 	New: func() interface{} {
 		return make([]byte, 4<<10)
 	},
